@@ -1,0 +1,14 @@
+type Quiz @model {
+  id: ID!
+  title: String!
+  description: String!
+  questions: [Question] @connection(keyName: "byQuiz", fields: ["id"])
+}
+
+type Question @model @key(name: "byQuiz", fields: ["quizID"]) {
+  id: ID!
+  quizID: ID!
+  questionText: String!
+  options: [String]!
+  correctAnswer: String!
+}
